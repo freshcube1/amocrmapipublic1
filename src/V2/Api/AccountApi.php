@@ -41,6 +41,11 @@ class AccountApi implements EntityApiInterface
             throw new RequestException($data["response"]["error"], (int) $data["response"]["code"]);
         }
 
+	if (!empty($data['timezone']))
+        {
+        		$data['_embedded']['timezone'] = $data['timezone'];
+        }
+
         return $data["_embedded"];
     }
 }
